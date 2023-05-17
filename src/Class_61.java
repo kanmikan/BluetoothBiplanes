@@ -190,15 +190,13 @@ public final class Class_61 extends FullCanvas implements Runnable {
    private static boolean var_2349;
    private static int var_237c;
    private static final char[][] var_23c2 = new char[][]{{'0', '_'}, {'1', '-', '@'}, {'A', 'B', 'C', '2', 'a', 'b', 'c'}, {'D', 'E', 'F', '3', 'd', 'e', 'f'}, {'G', 'H', 'I', '4', 'g', 'h', 'i'}, {'J', 'K', 'L', '5', 'j', 'k', 'l'}, {'M', 'N', 'O', '6', 'm', 'n', 'o'}, {'P', 'Q', 'R', 'S', '7', 'p', 'q', 'r', 's'}, {'T', 'U', 'V', '8', 't', 'u', 'v'}, {'W', 'X', 'Y', 'Z', '9', 'w', 'x', 'y', 'z'}};
-
+   
+   public static int altura = 300; //original: 180
 
    public Class_61(BluetoothBiplanes var1) {
       var_12ea = var1;
       var_364 = this.getWidth();
       var_392 = this.getHeight();
-	  
-	  System.out.println(var_364);
-	  System.out.println(var_392);	  
 	  
       if(var_364 == 128) {
          var_4a3 = 50;
@@ -418,7 +416,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
    private static void sub_1ba() {
       try {
-         Class_f6.var_187 = sub_a0a("/tm");
+         Class_f6.var_187 = sub_a0a("/tm"); //strings - menú
          int var0 = 3;
 
          while(true) {
@@ -442,11 +440,11 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
    private static void sub_1da() {
       try {
-         var_10de = new Class_71("/f");
-         var_1136 = new Class_71("/fzr");
-         var_115c = new Class_71("/fzb");
-         var_1031 = sub_a0a("/tg");
-         var_107b = sub_a0a("/tt");
+         var_10de = new Class_71("/f"); //fuente - abecedario
+         var_1136 = new Class_71("/fzr"); //fuente - numeros
+         var_115c = new Class_71("/fzb"); //fuente - numeros 2
+         var_1031 = sub_a0a("/tg"); //strings - interfaz
+         var_107b = sub_a0a("/tt"); //strings - frases
          var_155e = new int[3];
          var_15af = new int[3];
          var_5fc = new int[4];
@@ -464,16 +462,23 @@ public final class Class_61 extends FullCanvas implements Runnable {
                   sub_206(true);
                }
 
-               var_16c9 = var_10de.sub_59(var_1031[11] + " 100% ");
+               var_16c9 = var_10de.sub_59(var_1031[11] + " 100% "); //crea un grafico del texto
                var_18eb = Image.createImage(var_16c9, 15);
                var_194b = Image.createImage(var_16c9, 15);
                var_198c = var_18eb.getGraphics();
-               var_1996 = var_194b.getGraphics();
+               var_1996 = var_194b.getGraphics(); 
+			   
                sub_1ba();
-               var_7a2 = 255 - var_364;
-               var_7e4 = 208 - var_392;
-               var_12cc = new Class_8e[50];
+			   
+               //var_7a2 = 255 - var_364; // 255 - width(240) : 15
+               //var_7e4 = 208 - var_392; // 208 - height(320) : -112
+               var_7a2 = 0;
+			   var_7e4 = 0;
+			   
+			   
+			   var_12cc = new Class_8e[50];
                int var1 = 50;
+			   
 
                while(true) {
                   --var1;
@@ -664,15 +669,15 @@ public final class Class_61 extends FullCanvas implements Runnable {
    public static void sub_2d2(Class_bd var0) {
       if(var_9aa == 1) {
          if(Class_140.var_e5) {
-            var0.sub_154(0, var_42f[1], 180, 3);
+            var0.sub_154(0, var_42f[1], altura, 3);
          } else {
-            var0.sub_154(0, var_42f[0], 180, 2);
+            var0.sub_154(0, var_42f[0], altura, 2);
          }
       } else if(var_9aa == 0) {
          if(var0 == var_d3e[0]) {
-            var0.sub_154(0, var_42f[1], 180, 3);
+            var0.sub_154(0, var_42f[1], altura, 3);
          } else {
-            var0.sub_154(0, var_42f[0], 180, 2);
+            var0.sub_154(0, var_42f[0], altura, 2);
          }
       }
 
@@ -839,12 +844,13 @@ public final class Class_61 extends FullCanvas implements Runnable {
    public static void sub_309() {
       var_12fb.var_8de = true;
       var_1326.var_8de = true;
+	  
       if(var_2d9 == 1) {
-         var_d3e[0].sub_126(0, var_42f[0], 180, 2);
-         var_d3e[1].sub_126(0, var_42f[1], 180, 3);
+         var_d3e[0].sub_126(0, var_42f[0], altura, 2);
+         var_d3e[1].sub_126(0, var_42f[1], altura, 3);
       } else {
-         var_d3e[0].sub_126(0, var_42f[1], 180, 3);
-         var_d3e[1].sub_126(0, var_42f[0], 180, 2);
+         var_d3e[0].sub_126(0, var_42f[1], altura, 3);
+         var_d3e[1].sub_126(0, var_42f[0], altura, 2);
       }
 
       var_809 = 0;
@@ -918,8 +924,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
 			 } else {
 				var_d3e[1].var_6c3 = 39 + var0 - 16;
 				var_d3e[1].var_43d = var0 - 16;
-				var_d3e[0].sub_126(0, var_42f[1], 180, 3);
-				var_d3e[1].sub_126(0, var_42f[0], 180, 2);
+				
+				var_d3e[0].sub_126(0, var_42f[1], altura, 3);
+				var_d3e[1].sub_126(0, var_42f[0], altura, 2);
 				var_9aa = 0;
 				Class_f6.sub_121(33);
 			 }
@@ -961,8 +968,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
 				var_1326 = var_d3e[0];
 				var_12fb = var_d3e[1];
 				var_d3e[1].var_6c3 = -1;
-				var_d3e[0].sub_126(0, var_42f[0], 180, 2);
-				var_d3e[1].sub_126(0, var_42f[1], 180, 3);
+		
+				var_d3e[0].sub_126(0, var_42f[0], altura, 2);
+				var_d3e[1].sub_126(0, var_42f[1], altura, 3);
 				var_12fb.var_8de = false;
 				var_809 = 0;
 				var_866 = 0;
@@ -992,8 +1000,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
 				var_b8 = false;
 				var_12fb = var_d3e[0];
 				var_1326 = var_d3e[1];
-				var_d3e[0].sub_126(0, var_42f[1], 180, 3);
-				var_d3e[1].sub_126(0, var_42f[0], 180, 2);
+		
+				var_d3e[0].sub_126(0, var_42f[1], altura, 3);
+				var_d3e[1].sub_126(0, var_42f[0], altura, 2);
 				var_1326.var_8de = false;
 				var_d3e[1].var_6c3 = -1;
 				sub_634(var_1326);
@@ -1333,7 +1342,8 @@ public final class Class_61 extends FullCanvas implements Runnable {
       Class_12c.sub_e0(var1);
    }
 
-   public void sub_3e1(Graphics var1) {
+   //VIEW: canvas del juego... probablemente.
+   public void sub_3e1(Graphics var1) throws Exception {
       if(var_d3e[0].var_496 == 0) {
          var_71a = var_d3e[0].var_f6 - (var_364 >> 1);
          var_746 = var_d3e[0].var_144 - (var_392 >> 1);
@@ -1344,19 +1354,25 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
       var_71a = var_71a < 0?0:(var_71a > var_7a2?var_7a2:var_71a);
       var_746 = var_746 < 0?0:(var_746 > var_7e4?var_7e4:var_746);
+	  
       byte var2 = 124;
       var1.setColor('\uccff');
-      var1.fillRect(0, 0, var_364, var2);
+      
+	  //var1.fillRect(0, 0, var_364, var2);
+	  var1.fillRect(0, 0, 240, 320); //limpiar canvas con un color de pantalla completa.
+	  
       var1.translate(-var_71a, -var_746);
 
       for(int var3 = 0; var3 < 255; var3 += 128) {
-         var1.drawImage(var_def, var3, var2, 20);
-         var1.drawImage(var_dfe, var3, 0, 20);
+         var1.drawImage(var_def, var3, 240, 20); //fondo dentro de un juego parte de abajo
+         var1.drawImage(var_dfe, var3, 0, 20); //parte de arriba del fondo
       }
-
+	  
       int var4 = var_b07 >> 6;
-      var1.drawImage(var_d93[57], var4, var_b19, 20);
-      var1.drawImage(var_e4c, var4 + var_1ab0, var_b19 + var_1ac1, 20);
+      var1.drawImage(var_d93[57], var4, var_b19, 20); //zeppeling
+	  var1.drawImage(var_e4c, var4 + var_1ab0, var_b19 + var_1ac1, 20); //puntuacion en el zeppeling
+	  
+	  //movimiento del zeppeling
       if(var_eb) {
          var_b07 += 16;
          if(var4 > 255) {
@@ -1364,13 +1380,16 @@ public final class Class_61 extends FullCanvas implements Runnable {
             var_b19 = sub_822(104);
          }
       }
+	  //
 
       int var5 = 2;
+	  //height: var_392
+	  int constante_278 = 285;
 
       while(true) {
          --var5;
          if(var5 < 0) {
-            var1.drawImage(var_d93[1], 109, 168, 20);
+            var1.drawImage(var_d93[1], 109, constante_278, 20); //granero
             int var7 = 2;
 
             while(true) {
@@ -1413,7 +1432,10 @@ public final class Class_61 extends FullCanvas implements Runnable {
                                     var14 = var_392 - 4;
                                  }
 
-                                 var1.drawImage(var_d93[63], var_364, var14, 10);
+                                 var1.drawImage(var_d93[63], var_364, var14, 10); //flecha derecha
+								 
+								 //printme(var_d93[63], "var_d93[63]"); 
+	  
                               } else if(var13 >= 135 && var13 < 225) {
                                  var14 = var11 - var_71a;
                                  if(var14 < 4) {
@@ -1423,6 +1445,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
                                  }
 
                                  var1.drawImage(var_d93[61], var14, var_392, 33);
+								 
+								 //printme(var_d93[61], "var_d93[61]");
+								 
                               } else if(var13 >= 225 && var13 < 315) {
                                  var14 = var12 - var_746;
                                  if(var14 < 4) {
@@ -1432,6 +1457,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
                                  }
 
                                  var1.drawImage(var_d93[62], 0, var14, 6);
+								 
+								 //printme(var_d93[62], "var_d93[62]");
+								 
                               } else if(var13 > 315 || var13 < 45) {
                                  var14 = var11 - var_71a;
                                  if(var14 < 4) {
@@ -1440,15 +1468,16 @@ public final class Class_61 extends FullCanvas implements Runnable {
                                     var14 = var_364 - 4;
                                  }
 
-                                 var1.drawImage(var_d93[60], var14, 0, 17);
+                                 var1.drawImage(var_d93[60], var14, 0, 17); //flecha arriba
                               }
                            }
                         }
-
+						
                         if(var_a87 > 0) {
                            if(var_1bd && (var_9aa == 0 || var_b8)) {
+							  //printme(var_e36, "var_e36");
                               if(var_abf == 3) {
-                                 var1.drawImage(var_e36, 2, 2, 20);
+                                 var1.drawImage(var_e36, 2, 2, 20); //cartel al ganar un punto.
                               } else {
                                  var1.drawImage(var_e36, var_364 - 2, 2, 24);
                               }
@@ -1475,7 +1504,11 @@ public final class Class_61 extends FullCanvas implements Runnable {
                }
 
                boolean var15 = false;
-               var1.drawImage(var_dac[0], var_556[var7], var_5ad[var7], 3);
+               var1.drawImage(var_dac[0], var_556[var7], var_5ad[var7], 3); //nube
+			   
+			   //debugme(sub_822(104), "sub_822(104)");
+			   
+			   
                if(var_9aa == 1) {
                   if(Class_140.var_e5 && var7 < var_8da || !Class_140.var_e5 && var7 >= var_8b0) {
                      var15 = true;
@@ -1595,7 +1628,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
          String[] var2 = var_10de.sub_23(var_107b[var1], var_3e6 - 12 - 32);
          var_f29.setColor(16777215);
          var_f29.fillRect(4, 2, var_3e6 - 8 + 1, var_3f5 - 4);
-         Image var3 = var_d93[var_a36];
+         Image var3 = var_d93[var_a36]; //avatar del enemigo.
+		 //printme(var3, "var3");
+			   
          if(var_abf == 3) {
             var_f29.drawImage(var3, 4, 4, 20);
             var_10de.sub_11d(var_f29, var2, 40, 4, 20);
@@ -1607,6 +1642,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
       }
    }
 
+   //VIEW: "YOUR RECORDS"
    public static void sub_4c4(Graphics var0) {
       var0.setColor('\uccff');
       var0.fillRect(0, 0, var_364, var_392);
@@ -1615,8 +1651,8 @@ public final class Class_61 extends FullCanvas implements Runnable {
       var_fa3.drawImage(var_d93[69], 0, 0, 20);
       var_fa3.fillRect(11, 58, 77, 18);
       int var1 = 8;
-
-      for(int var3 = 0; var3 < 4; ++var3) {
+		
+	  for(int var3 = 0; var3 < 4; ++var3) {
          var_fa3.setColor(var_1508[var3]);
          var_fa3.fillRect(4, var1, 96, 13);
          Image var2 = var_d93[47 + var3];
@@ -1632,20 +1668,26 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
          if(var_6b2[var3]) {
             var_fa3.drawImage(var_d93[71], 87, var1 - 1, 20);
+			//printme(var_d93[71], "var_d93[71]");
          }
 
          var1 += 17;
       }
 
-      var_fa3.drawImage(var_d93[70], 50, 8, 20);
+      var_fa3.drawImage(var_d93[70], 50, 8, 20); //parte del menu "your records"
+	  //printme(var_d93[70], "var_d93[70]"); 
+	  
       int var4 = var_364 >> 1;
       int var5 = var_392 >> 1;
-      var0.drawImage(var_e7c, var4, var5, 3);
+      var0.drawImage(var_e7c, var4, var5, 3); //menu "your records" tambien..
+	  //printme(var_e7c, "var_e7c");
+	  
       var_10de.sub_137(var0, var_1031[19], var4 - (var_e7c.getWidth() >> 1) + 8, var5 - (var_e7c.getHeight() >> 1) - 4, 20);
       sub_66c(var0, var_1031[7], false);
       sub_66c(var0, var_1031[20], true);
    }
 
+   //VIEW: "HELP"
    public static void sub_4fe(Graphics var0) {
       var0.setColor('\uccff');
       var0.fillRect(0, 0, var_364, var_392);
@@ -1683,6 +1725,10 @@ public final class Class_61 extends FullCanvas implements Runnable {
       case 1:
          var_fd9.drawImage(var_d93[21], 63, 42, 3);
          var_fd9.drawImage(var_d93[28], 63, 32, 3);
+		 
+		 //printme(var_d93[21], "var_d93[21]");
+		 //printme(var_d93[28], "var_d93[28]");
+		 
          var1 = var_10de.sub_23(var_1031[28], 46);
          var_10de.sub_11d(var_fd9, var1, 4, 32, 20);
          var1 = var_10de.sub_23(var_1031[29], 46);
@@ -1695,6 +1741,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
          var_fd9.drawImage(var_def, 0, 60, 36);
          var_fd9.setClip(0, 0, 128, 100);
          var_fd9.drawImage(var_d93[23], 63, 37, 3);
+		 
+		 //printme(var_d93[23], "var_d93[23]");
+		 
          var1 = var_10de.sub_23(var_1031[28], 46);
          var_10de.sub_11d(var_fd9, var1, 4, 32, 20);
          var1 = var_10de.sub_23(var_1031[29], 46);
@@ -1705,6 +1754,8 @@ public final class Class_61 extends FullCanvas implements Runnable {
       sub_66c(var0, var_1031[7], false);
       sub_66c(var0, var_1031[6], true);
       var0.drawImage(var_ed8, var_364 >> 1, var_392 >> 1, 3);
+      //printme(var_ed8, "var_ed8");
+	  
    }
 
    public static void sub_55f(Graphics var0) {
@@ -1716,6 +1767,8 @@ public final class Class_61 extends FullCanvas implements Runnable {
       var_fa3.setColor(16777215);
       var_fa3.fillRect(13, 60, 62, 14);
       var_fa3.drawImage(var_d93[var_1388.var_6c3 + 8], 6, 6, 20);
+	  //printme(var_d93[var_1388.var_6c3 + 8], "var_d93[var_1388.var_6c3 + 8]");
+	  
       int var1 = var_13aa.var_6c3 + 8;
       if(var_c == 10) {
          var1 = 48 + var_c71;
@@ -1727,12 +1780,17 @@ public final class Class_61 extends FullCanvas implements Runnable {
       var_10de.sub_11d(var_fa3, var2, 25, 6, 20);
       if(var_c == 9) {
          var_fa3.drawImage(var_d93[68], 6, 23, 20);
+		 //printme(var_d93[68], "var_d93[68]");
       }
 
-      var0.drawImage(var_e7c, var_364 >> 1, var_392 >> 1, 3);
+      var0.drawImage(var_e7c, var_364 >> 1, var_392 >> 1, 3); //menu "your records"
+	  //printme(var_e7c, "var_e7c");
+	  
       sub_66c(var0, var_1031[7], false);
    }
 
+
+   //VIEW: PANTALLA DE VICTORIA
    public static void sub_5a8(Graphics var0) {
       byte var1 = 124;
       var0.setColor('\uccff');
@@ -1743,6 +1801,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
          var0.drawImage(var_def, var2, var1, 20);
          var0.drawImage(var_dfe, var2, 0, 20);
       }
+	  
+	  //printme(var_def, "var_def");
+	  //printme(var_dfe, "var_dfe");
 
       var0.translate(var_1720, 0);
       var_1720 += 2;
@@ -1762,6 +1823,10 @@ public final class Class_61 extends FullCanvas implements Runnable {
             int var7 = var_166d >> 6;
             var0.drawImage(var_d93[64], var4, 20, 10);
             var0.drawImage(var_187b, var4 - 25, 17, 10);
+			
+			//printme(var_d93[64], "var_d93[64]");
+			//printme(var_187b, "var_187b");
+			
             int var8 = sub_822(3);
             int var9 = var_1653 >> 6;
             var0.drawImage(var_d93[64], var5, 80 + var8 + var9, 10);
@@ -1817,6 +1882,8 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
          var_155e[var3] -= 1 + var3;
          var0.drawImage(var_dac[0], var_155e[var3], var_15af[var3], 3);
+		 //printme(var_dac[0], "var_dac[0]");
+		 
          if(var_155e[var3] < -32) {
             var4 = var_392 / 3;
             var_15af[var3] = var4 * var3 + sub_822(var4);
@@ -1984,7 +2051,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
          case 0:
             var1.drawImage(var_d93[0], 0, 0, 20); //este es el logo
             break;
-         case 1:
+         case 1: //fondo de menu, y creo que tambien del juego.
             this.sub_3e1(var1);
             if(var_11b) {
                sub_5f4(var1);
@@ -2070,7 +2137,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
             var_10de.sub_137(var1, var_1031[34], var_364 >> 1, var3 + (var2 << 1), 17);
             var_10de.sub_137(var1, var_1031[35], var_364 >> 1, var3 + var2 * 3, 17);
             var1.drawImage(var_d4f[1], var_364 - 4, var_392 + 2, 40); //avion rojo del menu principal
-			imagePrint(var_d4f[1]);
             break;
          case 14:
             if(var_34b == -1) {
@@ -2158,10 +2224,12 @@ public final class Class_61 extends FullCanvas implements Runnable {
             int var9 = var4 + var2 - 2;
             if((sub_7e7() & 1) != 0) {
                var0.drawImage(var_d93[58], var9, var5, 20);
+			   //printme(var_d93[58], "var_d93[58]");
             }
 
             if((sub_7e7() & 2) != 0) {
                var0.drawImage(var_d93[59], var9, var5 + var3 - 1 - 2 - 5, 20);
+			   //printme(var_d93[59], "var_d93[59]");
             }
          }
 
@@ -2348,7 +2416,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
 		  var_cfd.readFully(var_1da0);
 		  var_cfd.readFully(var_1db0);
 	   } catch (IOException e){
-		  System.out.println("error en io");
+		  ;
 	   }
    }
 
@@ -2404,6 +2472,17 @@ public final class Class_61 extends FullCanvas implements Runnable {
       return var1;
    }
    
+   /////////////PROPIO///////////////////////////////////////////
+   
+   public static void debugme(int data, String id){
+	   System.out.println("[" + id + "]: " + Integer.toString(data));
+   }
+   
+   public static void printme(Image image, String id){
+	   System.out.println("[Imagen de la variable]: " + id);
+	   imagePrint(image);
+   }
+   
    //imprime el binario de los objetos Image, para ser leidas via STDOUT.
    public static void imagePrint(Image image){
 	  //byte[] rawBytes = getBinaryData(var1);
@@ -2423,6 +2502,8 @@ public final class Class_61 extends FullCanvas implements Runnable {
       System.out.println(hexString.toString());
 	  System.out.println("--------------");
    }
+
+	///////////////////////////////////////////////////////////////
 
    public static Image[] sub_96d(int var0) {
       Image[] var1 = new Image[var0];
@@ -2523,6 +2604,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
    }
 
    public static int sub_aee(int var0) {
+	   
+	  //debugme(var0, "var0 (sub_aee)");
+	   
       try {
          return var0 < 90?var_1ef5[var0]:(var0 == 90?128:(var0 < 180?var_1ef5[180 - var0]:(var0 == 180?0:(var0 < 270?-var_1ef5[var0 - 180]:(var0 == 270?-128:(var0 < 360?-var_1ef5[360 - var0]:1))))));
       } catch (Exception var2) {
@@ -2545,7 +2629,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
       }
 
       if(var6 == 0) {
-         return var7 >= 0?0:180;
+         return var7 >= 0?0:altura;
       } else if(var7 == 0) {
          return var6 >= 0?270:90;
       } else {
@@ -2554,7 +2638,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
          int var8 = var6 + var7;
          var6 = var6 * 10 / var8;
          var7 = var7 * 10 / var8;
-         return !var4 && var5?var_1f2e[var6][var7]:(!var4 && !var5?90 + var_1f2e[var7][var6]:(var4 && !var5?180 + var_1f2e[var6][var7]:(var4 && var5?270 + var_1f2e[var7][var6]:-1)));
+         return !var4 && var5?var_1f2e[var6][var7]:(!var4 && !var5?90 + var_1f2e[var7][var6]:(var4 && !var5?altura + var_1f2e[var6][var7]:(var4 && var5?270 + var_1f2e[var7][var6]:-1)));
       }
    }
 

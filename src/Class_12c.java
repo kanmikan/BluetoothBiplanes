@@ -34,7 +34,7 @@ public final class Class_12c {
    }
 
    private static void sub_9d(int var0) {
-      var_1b5[var_132++] = var0;
+	  var_1b5[var_132++] = var0;
       if(var_132 >= 20) {
          var_132 = 0;
       }
