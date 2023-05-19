@@ -56,18 +56,18 @@ public class Class_bd {
    public static final int[] var_ada = new int[32];
    public static final int var_b36 = 22;
 
-   public static int constante_182 = 300; //colision de aviones?
-   
-   public static int constante_109 = 209;
-   public static int constante_145 = 245;
-   public static int constante_168 = 268;
+   public static int constante_182 = 300; //colision del suelo.
    
    public static int constante_164 = 274; //hitbox granero (Y)
    public static int constante_104 = 104; //hitbox granero (X)
    public static int constante_150 = 150;
    
    public static int constante_208 = 308;
-   public static int constante_189 = 289;
+   
+   public static int constante_189 = 300; //area donde funcionan los proyectiles?
+   public static int constante_168 = 268;
+   public static int constante_109 = 209;
+   public static int constante_145 = 245;
 
    public Class_bd(boolean var1) {
       int var2 = 2;

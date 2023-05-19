@@ -1,5 +1,5 @@
-MIDlet-1: btbiplanes_mod, btbiplanes_mod.png, BluetoothBiplanes
-MIDlet-Jar-Size: 237593
+MIDlet-1: BluetoothBiplanesMod, icon.png, BluetoothBiplanes
+MIDlet-Jar-Size: 237526
 MIDlet-Jar-URL: btbiplanes_mod.jar
 MIDlet-Name: btbiplanes_mod
 MIDlet-Vendor: Unknown

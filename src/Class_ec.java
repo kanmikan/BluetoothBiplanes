@@ -39,7 +39,7 @@ public class Class_ec {
             this.var_ac -= Class_61.sub_a6a(this.var_ec) * 10 >> 7;
          }
 
-         if(this.var_ac > 189 || this.var_ac > 168 && this.var_5e > 109 && this.var_5e < 145) {
+         if(this.var_ac > Class_bd.constante_189 || this.var_ac > Class_bd.constante_168 && this.var_5e > Class_bd.constante_109 && this.var_5e < Class_bd.constante_145) {
             this.var_193.var_376 = this.var_5e + 1;
             this.sub_6a(false);
          }

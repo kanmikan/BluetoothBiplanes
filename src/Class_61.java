@@ -772,9 +772,12 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
                            var_1230[var11++] = var_12be;
                            var_12be = 0;
-                           var_120a.var_d8.writeInt(var_809);
+                           var_120a.var_d8.writeInt(var_809); //bluetooth
                            var_120a.var_d8.write(var_1230);
                            var_120a.var_d8.flush();
+						   
+						   debugme(var_809, "VAR_809");
+						   
                            ++var_809;
                            break;
                         }
@@ -1384,12 +1387,12 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
       int var5 = 2;
 	  //height: var_392
-	  int constante_278 = 285;
+	  int constante_168 = 285;
 
       while(true) {
          --var5;
          if(var5 < 0) {
-            var1.drawImage(var_d93[1], 109, constante_278, 20); //granero
+            var1.drawImage(var_d93[1], 109, constante_168, 20); //granero
             int var7 = 2;
 
             while(true) {
@@ -1629,8 +1632,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
          var_f29.setColor(16777215);
          var_f29.fillRect(4, 2, var_3e6 - 8 + 1, var_3f5 - 4);
          Image var3 = var_d93[var_a36]; //avatar del enemigo.
-		 //printme(var3, "var3");
-			   
          if(var_abf == 3) {
             var_f29.drawImage(var3, 4, 4, 20);
             var_10de.sub_11d(var_f29, var2, 40, 4, 20);
@@ -1725,10 +1726,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
       case 1:
          var_fd9.drawImage(var_d93[21], 63, 42, 3);
          var_fd9.drawImage(var_d93[28], 63, 32, 3);
-		 
-		 //printme(var_d93[21], "var_d93[21]");
-		 //printme(var_d93[28], "var_d93[28]");
-		 
          var1 = var_10de.sub_23(var_1031[28], 46);
          var_10de.sub_11d(var_fd9, var1, 4, 32, 20);
          var1 = var_10de.sub_23(var_1031[29], 46);
@@ -1741,9 +1738,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
          var_fd9.drawImage(var_def, 0, 60, 36);
          var_fd9.setClip(0, 0, 128, 100);
          var_fd9.drawImage(var_d93[23], 63, 37, 3);
-		 
-		 //printme(var_d93[23], "var_d93[23]");
-		 
          var1 = var_10de.sub_23(var_1031[28], 46);
          var_10de.sub_11d(var_fd9, var1, 4, 32, 20);
          var1 = var_10de.sub_23(var_1031[29], 46);
@@ -1754,8 +1748,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
       sub_66c(var0, var_1031[7], false);
       sub_66c(var0, var_1031[6], true);
       var0.drawImage(var_ed8, var_364 >> 1, var_392 >> 1, 3);
-      //printme(var_ed8, "var_ed8");
-	  
    }
 
    public static void sub_55f(Graphics var0) {
@@ -1792,7 +1784,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
    //VIEW: PANTALLA DE VICTORIA
    public static void sub_5a8(Graphics var0) {
-      byte var1 = 124;
+      int var1 = 240; // byte 124
       var0.setColor('\uccff');
       var0.fillRect(0, 0, var_364, var1);
       var0.translate(-var_1720, 0);
@@ -1802,9 +1794,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
          var0.drawImage(var_dfe, var2, 0, 20);
       }
 	  
-	  //printme(var_def, "var_def");
-	  //printme(var_dfe, "var_dfe");
-
       var0.translate(var_1720, 0);
       var_1720 += 2;
       if(var_1720 > 128) {
@@ -1823,9 +1812,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
             int var7 = var_166d >> 6;
             var0.drawImage(var_d93[64], var4, 20, 10);
             var0.drawImage(var_187b, var4 - 25, 17, 10);
-			
-			//printme(var_d93[64], "var_d93[64]");
-			//printme(var_187b, "var_187b");
 			
             int var8 = sub_822(3);
             int var9 = var_1653 >> 6;
@@ -2629,7 +2615,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
       }
 
       if(var6 == 0) {
-         return var7 >= 0?0:altura;
+         return var7 >= 0?0:180;
       } else if(var7 == 0) {
          return var6 >= 0?270:90;
       } else {
@@ -2638,7 +2624,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
          int var8 = var6 + var7;
          var6 = var6 * 10 / var8;
          var7 = var7 * 10 / var8;
-         return !var4 && var5?var_1f2e[var6][var7]:(!var4 && !var5?90 + var_1f2e[var7][var6]:(var4 && !var5?altura + var_1f2e[var6][var7]:(var4 && var5?270 + var_1f2e[var7][var6]:-1)));
+         return !var4 && var5?var_1f2e[var6][var7]:(!var4 && !var5?90 + var_1f2e[var7][var6]:(var4 && !var5?180 + var_1f2e[var6][var7]:(var4 && var5?270 + var_1f2e[var7][var6]:-1)));
       }
    }
 
