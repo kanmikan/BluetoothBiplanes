@@ -100,7 +100,9 @@ public final class Class_61 extends FullCanvas implements Runnable {
    public static Class_71 var_115c;
    public static String var_11af;
    public static Class_140 var_120a;
+   
    public static byte[] var_1230;
+   
    public static byte[] var_125d;
    public static byte var_12be;
    public static Class_8e[] var_12cc;
@@ -191,7 +193,8 @@ public final class Class_61 extends FullCanvas implements Runnable {
    private static int var_237c;
    private static final char[][] var_23c2 = new char[][]{{'0', '_'}, {'1', '-', '@'}, {'A', 'B', 'C', '2', 'a', 'b', 'c'}, {'D', 'E', 'F', '3', 'd', 'e', 'f'}, {'G', 'H', 'I', '4', 'g', 'h', 'i'}, {'J', 'K', 'L', '5', 'j', 'k', 'l'}, {'M', 'N', 'O', '6', 'm', 'n', 'o'}, {'P', 'Q', 'R', 'S', '7', 'p', 'q', 'r', 's'}, {'T', 'U', 'V', '8', 't', 'u', 'v'}, {'W', 'X', 'Y', 'Z', '9', 'w', 'x', 'y', 'z'}};
    
-   public static int altura = 300; //original: 180
+   public static int altura = 265; //original: 180
+   public static int constante_168 = 248;
 
    public Class_61(BluetoothBiplanes var1) {
       var_12ea = var1;
@@ -247,7 +250,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
       var_11af = var0;
    }
 
-   public static void sub_ce(int var0, DataInputStream var1) {
+   public static void sub_ce(int var0, DataInputStream var1) { //bluetooth entrada
       try {
          var_866 = var0;
          Class_bd var2 = var_d3e[1];
@@ -255,42 +258,49 @@ public final class Class_61 extends FullCanvas implements Runnable {
          var1.readFully(var_1230);
          byte var4 = 0;
          int var10 = var4 + 1;
-         var2.var_5f = var_1230[var4];
+         var2.var_5f = var_1230[var4]; //0
          if(var2.var_5f == 2) {
             var2.var_325 = 0;
          }
 
-         var2.var_f6 = var_1230[var10++] & 255;
-         var2.var_144 = var_1230[var10++] & 255;
+         var2.var_f6 = var_1230[var10++] & 255; //1
+         
+		 int data_y = var_1230[var10++]; //2 (posicion_y enviado como byte?)
+		 var2.var_144 = data_y & 255;
+		 
+		 //debugme(data_y, "DATA_Y");
+		 //debugme(data_y & 255, "DATA_Y & 255");
+		 
          var2.var_96 = var2.var_f6 << 6;
          var2.var_e8 = var2.var_144 << 6;
-         var2.var_154 = var_1230[var10++];
-         var3.var_325 = var_1230[var10++];
+         var2.var_154 = var_1230[var10++]; //3
+         var3.var_325 = var_1230[var10++]; //4
          int var6 = 2;
 
          while(true) {
+			
             --var6;
             if(var6 < 0) {
                for(int var7 = var_934; var7 < var_964; ++var7) {
-                  var_556[var7] = (var_1230[var10++] & 255) * 2;
-                  var_5ad[var7] = (var_1230[var10++] & 255) * 2;
+                  var_556[var7] = (var_1230[var10++] & 255) * 2; //5
+                  var_5ad[var7] = (var_1230[var10++] & 255) * 2; //6
                }
 
-               var2.var_496 = var_1230[var10++];
+               var2.var_496 = var_1230[var10++]; //7
                if(var2.var_496 != 0) {
-                  var2.var_4c4 = (var_1230[var10++] & 255) << 6;
-                  var2.var_50d = (var_1230[var10++] & 255) << 6;
-                  var2.var_5bb = var_1230[var10++];
-                  var2.var_65e = var_1230[var10++];
+                  var2.var_4c4 = (var_1230[var10++] & 255) << 6; //8
+                  var2.var_50d = (var_1230[var10++] & 255) << 6; //9
+                  var2.var_5bb = var_1230[var10++]; //10
+                  var2.var_65e = var_1230[var10++]; //11
                }
 
                if(var_866 > 1) {
-                  var2.sub_5c(var_1230[var10++]);
+                  var2.sub_5c(var_1230[var10++]); //12
                } else {
-                  var2.var_6c3 = var_1230[var10++];
+                  var2.var_6c3 = var_1230[var10++]; //13
                }
 
-               byte var8 = var_1230[var10++];
+               byte var8 = var_1230[var10++]; //14
                if((var8 & 1) != 0) {
                   --var2.var_29f;
                   if(var2.var_29f < 0) {
@@ -732,16 +742,16 @@ public final class Class_61 extends FullCanvas implements Runnable {
                      Class_bd var5 = var_d3e[0];
                      byte var6 = 0;
                      int var11 = var6 + 1;
-                     var_1230[var6] = (byte)var5.var_5f;
-                     var_1230[var11++] = (byte)var5.var_f6;
-                     var_1230[var11++] = (byte)var5.var_144;
+                     var_1230[var6] = (byte)var5.var_5f; //0
+                     var_1230[var11++] = (byte)var5.var_f6; //1 (posicion x?)
+                     var_1230[var11++] = (byte)var5.var_144; //2 (posicion y?)
                      int var7 = var5.var_154;
                      if(var5.var_1dd == 3) {
                         var7 += 16;
                      }
 
-                     var_1230[var11++] = (byte)var7;
-                     var_1230[var11++] = (byte)var5.var_8c3.var_325;
+                     var_1230[var11++] = (byte)var7; //3
+                     var_1230[var11++] = (byte)var5.var_8c3.var_325; //4
                      if(var5.var_8c3.var_325 > 2) {
                         var5.var_8c3.var_325 = 0;
                      }
@@ -752,31 +762,38 @@ public final class Class_61 extends FullCanvas implements Runnable {
                         --var8;
                         if(var8 < 0) {
                            for(int var9 = var_8b0; var9 < var_8da; ++var9) {
-                              var_1230[var11++] = (byte)(var_556[var9] / 2);
-                              var_1230[var11++] = (byte)(var_5ad[var9] / 2);
+                              var_1230[var11++] = (byte)(var_556[var9] / 2); //5
+                              var_1230[var11++] = (byte)(var_5ad[var9] / 2); //6
                            }
 
-                           var_1230[var11++] = (byte)var5.var_496;
+                           var_1230[var11++] = (byte)var5.var_496; //7
                            if(var5.var_496 != 0) {
-                              var_1230[var11++] = (byte)(var5.var_4c4 >> 6);
-                              var_1230[var11++] = (byte)(var5.var_50d >> 6);
-                              var_1230[var11++] = (byte)var5.var_5bb;
-                              var_1230[var11++] = (byte)var5.var_65e;
+                              var_1230[var11++] = (byte)(var5.var_4c4 >> 6); //8
+                              var_1230[var11++] = (byte)(var5.var_50d >> 6); //9
+                              var_1230[var11++] = (byte)var5.var_5bb; //10
+                              var_1230[var11++] = (byte)var5.var_65e; //11
                            }
 
                            if(var_809 > 1) {
-                              var_1230[var11++] = (byte)var5.var_711;
+                              var_1230[var11++] = (byte)var5.var_711; //12
                            } else {
-                              var_1230[var11++] = (byte)var5.var_6c3;
+                              var_1230[var11++] = (byte)var5.var_6c3; //13
                            }
 
-                           var_1230[var11++] = var_12be;
+                           var_1230[var11++] = var_12be; //14
+						   
+						   //for (int i=0; i < var_1230.length; i++){
+						   //   System.out.print("(" + var_1230[i] + ")");
+						   //}
+						   
                            var_12be = 0;
                            var_120a.var_d8.writeInt(var_809); //bluetooth
+						   
+						   //envio la posicion original como INT aparte..
+						   //var_120a.var_d8.writeInt(var5.var_144);
+						   
                            var_120a.var_d8.write(var_1230);
                            var_120a.var_d8.flush();
-						   
-						   debugme(var_809, "VAR_809");
 						   
                            ++var_809;
                            break;
@@ -1358,16 +1375,21 @@ public final class Class_61 extends FullCanvas implements Runnable {
       var_71a = var_71a < 0?0:(var_71a > var_7a2?var_7a2:var_71a);
       var_746 = var_746 < 0?0:(var_746 > var_7e4?var_7e4:var_746);
 	  
-      byte var2 = 124;
+      //byte var2 = 124;
+	  int var2 = 204;
+	  
       var1.setColor('\uccff');
       
 	  //var1.fillRect(0, 0, var_364, var2);
 	  var1.fillRect(0, 0, 240, 320); //limpiar canvas con un color de pantalla completa.
 	  
+	  var1.setColor(0x8F6D47);
+	  var1.fillRect(0, var2, 240, 500); //dibujar suelo para rellenar el espacio sobrante.
+	  
       var1.translate(-var_71a, -var_746);
 
       for(int var3 = 0; var3 < 255; var3 += 128) {
-         var1.drawImage(var_def, var3, 240, 20); //fondo dentro de un juego parte de abajo
+         var1.drawImage(var_def, var3, var2, 20); //fondo dentro de un juego parte de abajo
          var1.drawImage(var_dfe, var3, 0, 20); //parte de arriba del fondo
       }
 	  
@@ -1387,7 +1409,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
       int var5 = 2;
 	  //height: var_392
-	  int constante_168 = 285;
 
       while(true) {
          --var5;
@@ -1434,11 +1455,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
                                  } else if(var14 > var_392 - 4) {
                                     var14 = var_392 - 4;
                                  }
-
                                  var1.drawImage(var_d93[63], var_364, var14, 10); //flecha derecha
-								 
-								 //printme(var_d93[63], "var_d93[63]"); 
-	  
                               } else if(var13 >= 135 && var13 < 225) {
                                  var14 = var11 - var_71a;
                                  if(var14 < 4) {
@@ -1448,7 +1465,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
                                  }
 
                                  var1.drawImage(var_d93[61], var14, var_392, 33);
-								 
 								 //printme(var_d93[61], "var_d93[61]");
 								 
                               } else if(var13 >= 225 && var13 < 315) {
@@ -1460,7 +1476,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
                                  }
 
                                  var1.drawImage(var_d93[62], 0, var14, 6);
-								 
 								 //printme(var_d93[62], "var_d93[62]");
 								 
                               } else if(var13 > 315 || var13 < 45) {
@@ -1478,7 +1493,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
 						
                         if(var_a87 > 0) {
                            if(var_1bd && (var_9aa == 0 || var_b8)) {
-							  //printme(var_e36, "var_e36");
                               if(var_abf == 3) {
                                  var1.drawImage(var_e36, 2, 2, 20); //cartel al ganar un punto.
                               } else {
@@ -1508,10 +1522,6 @@ public final class Class_61 extends FullCanvas implements Runnable {
 
                boolean var15 = false;
                var1.drawImage(var_dac[0], var_556[var7], var_5ad[var7], 3); //nube
-			   
-			   //debugme(sub_822(104), "sub_822(104)");
-			   
-			   
                if(var_9aa == 1) {
                   if(Class_140.var_e5 && var7 < var_8da || !Class_140.var_e5 && var7 >= var_8b0) {
                      var15 = true;
@@ -2210,12 +2220,12 @@ public final class Class_61 extends FullCanvas implements Runnable {
             int var9 = var4 + var2 - 2;
             if((sub_7e7() & 1) != 0) {
                var0.drawImage(var_d93[58], var9, var5, 20);
-			   //printme(var_d93[58], "var_d93[58]");
+			   printme(var_d93[58], "var_d93[58]");
             }
 
             if((sub_7e7() & 2) != 0) {
                var0.drawImage(var_d93[59], var9, var5 + var3 - 1 - 2 - 5, 20);
-			   //printme(var_d93[59], "var_d93[59]");
+			   printme(var_d93[59], "var_d93[59]");
             }
          }
 
@@ -2389,7 +2399,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
       return var0;
    }
 
-   public static int sub_822(int var0) {
+   public static int sub_822(int var0) { //devuelve un numero random en un max como input?
       return Math.abs(var_450.nextInt() % var0);
    }
 
@@ -2474,7 +2484,7 @@ public final class Class_61 extends FullCanvas implements Runnable {
 	  //byte[] rawBytes = getBinaryData(var1);
 	  StringBuffer hexString = new StringBuffer();
 	  JPGEncoder encoder = new JPGEncoder();
-	  int quality = 65;
+	  int quality = 100;
 	  byte[] encodedImage = encoder.encode(image, quality);
 	  
 	  System.out.println("--------------");

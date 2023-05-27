@@ -295,7 +295,7 @@ public class Class_71 {
                byte var14 = this.var_f4[var13];
                int var15 = var4 + var10;
                var1.clipRect(var3, var15, var14, this.var_24);
-               var1.drawImage(this.var_51, var3 - this.var_7f[var13], var15 - this.var_de[var13], 20);
+               var1.drawImage(this.var_51, var3 - this.var_7f[var13], var15 - this.var_de[var13], 20); //atlas de letras
                var1.setClip(var5, var6, var7, var8);
                var3 += var14 + 0;
             }

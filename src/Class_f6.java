@@ -202,18 +202,18 @@ public class Class_f6 {
          } else {
             if(var1 != 0 && !Class_61.var_680[var1 - 1]) {
                var0.drawImage(Class_61.var_d93[52], var2, var3, 20);
-            } else {
-               var0.drawImage(Class_61.var_d93[47 + var1], var2, var3, 20);
-            }
+			} else {
+               var0.drawImage(Class_61.var_d93[47 + var1], var2, var3, 20); //choose opponent opcion
+			}
 
             var2 += 18;
             return true;
          }
       } else {
          if(var1 != 0 && !Class_61.var_680[var1 - 1]) {
-            var0.drawImage(Class_61.var_d93[51], var2, var3, 20);
+            var0.drawImage(Class_61.var_d93[51], var2, var3, 20); //choose player opcion
          } else {
-            var0.drawImage(Class_61.var_d93[43 + var1], var2, var3, 20);
+            var0.drawImage(Class_61.var_d93[43 + var1], var2, var3, 20); //menu
          }
 
          var2 += 18;

@@ -10,7 +10,7 @@ public class Class_8e {
    public int var_1f6;
 
 
-   public static int constante_186 = 300;
+   public static int constante_186 = Class_61.altura;
    public static int constante_166 = 266;
    public static int constante_111 = 211;
    public static int constante_143 = 243;
@@ -28,11 +28,12 @@ public class Class_8e {
       if((this.var_1f6 == 0 || this.var_1f6 > 16) && this.var_1f6 == 0) {
          int var4 = this.var_45 >> 5;
          int var5 = this.var_ce >> 5;
-         var1.drawImage(Class_61.var_d93[this.var_1c1], var4, var5, 33);
+         var1.drawImage(Class_61.var_d93[this.var_1c1], var4, var5, 33); //particulas
          
 		 this.var_45 += this.var_128;
          this.var_ce += this.var_15e;
          this.var_15e += 25;
+		 
          if(this.var_15e > 200) {
             this.var_15e = 200;
          }

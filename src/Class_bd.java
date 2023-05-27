@@ -56,18 +56,22 @@ public class Class_bd {
    public static final int[] var_ada = new int[32];
    public static final int var_b36 = 22;
 
-   public static int constante_182 = 300; //colision del suelo.
+   public static int constante_182 = Class_61.altura; //colision del suelo.
    
-   public static int constante_164 = 274; //hitbox granero (Y)
+   public static int constante_164 = 238; //hitbox granero (Y)
    public static int constante_104 = 104; //hitbox granero (X)
+   
    public static int constante_150 = 150;
+   public static int constante_208 = 278;
    
-   public static int constante_208 = 308;
-   
-   public static int constante_189 = 300; //area donde funcionan los proyectiles?
+   public static int constante_189 = Class_61.altura; //area donde funcionan los proyectiles?
    public static int constante_168 = 268;
-   public static int constante_109 = 209;
-   public static int constante_145 = 245;
+   
+   public static int constante_109 = 109;
+   public static int constante_145 = 145;
+   
+   public static int constante_185 = 270;
+   public static int constante_160 = 245; //probablemente paracaidas
 
    public Class_bd(boolean var1) {
       int var2 = 2;
@@ -164,15 +168,8 @@ public class Class_bd {
       }
    }
 
-   // ? - ? - posicion_y - posicion_x
+   // ? - x? - posicion_y - ?
    public void sub_126(int var1, int var2, int var3, int var4) {
-	   
-	  //Class_61.debugme(var1, "sub_126 (var1)");
-	  //Class_61.debugme(var2, "sub_126 (var2)");
-	  //Class_61.debugme(var3, "sub_126 (var3)");
-	  //Class_61.debugme(var4, "sub_126 (var4)");
-	  
-	   
       this.var_1dd = var4;
       if(var4 == 3) {
          Class_61.var_12fb = this;
@@ -200,14 +197,19 @@ public class Class_bd {
       this.var_144 = var3;
    }
 
+   //aca se crea una avioneta (? - x - y - ?)
    public void sub_154(int var1, int var2, int var3, int var4) {
       this.var_5f = var1;
       this.var_96 = var2 << 6;
       this.var_e8 = var3 << 6;
+	  
       this.var_190 = 0;
       this.var_325 = 0;
       this.var_376 = 255;
       this.var_3b0 = 0;
+	  
+	  Class_61.debugme(var_e8, "var_e8");
+	  
       switch(var1) {
       case 0:
          this.var_154 = 1;
@@ -313,6 +315,8 @@ public class Class_bd {
    }
 
    public void sub_1de() {
+	   //Class_61.debugme(var_190, "var_190");
+	   
       if(this.var_496 == 0) {
          this.var_976 = true;
          switch(this.var_5f) {
@@ -368,10 +372,10 @@ public class Class_bd {
          break;
       case 1:
          if(this.var_190 < 250) {
-            this.sub_1de();
+            this.sub_1de(); //gravedad en el avion al no tener aceleracion al maximo?
          }
 
-         boolean var1 = false;
+         boolean var1 = false; 
 		 
 		 //comprobacion de altura del suelo?
          if((this.var_144 > constante_182 - this.var_7a1 || this.var_f6 > constante_109 - this.var_7a1 && this.var_f6 < constante_145 + this.var_7a1 && this.var_144 > constante_168 - this.var_7a1) && (this.var_850 == 0 || Class_61.sub_822(this.var_850) == 0)) {
@@ -456,8 +460,8 @@ public class Class_bd {
       case 3:
       default:
          break;
-      case 4:
-         if(this.var_4c4 >> 6 < 127) {
+      case 4: //personaje camina hacia el granero.
+	     if(this.var_4c4 >> 6 < 127) {
             this.sub_183(3);
          } else {
             this.sub_183(2);
@@ -621,9 +625,8 @@ public class Class_bd {
          var5 = this.var_4c4 >> 6;
          var6 = this.var_50d >> 6;
 		 
-		 
          if(this.var_5f < 2 && (this.var_144 > constante_182 || this.var_144 > constante_164 && this.var_f6 > constante_104 && this.var_f6 < constante_150)) {
-            this.sub_250();
+            this.sub_250(); //explosion al chocar.
             Class_61.var_12be = (byte)(Class_61.var_12be + 2);
             if(this.var_496 == 0) {
                ++Class_61.var_12be;
@@ -632,13 +635,15 @@ public class Class_bd {
                   this.var_29f = 0;
                }
 
-               Class_61.sub_634(this);
+               Class_61.sub_634(this); //texto del puntaje?
             }
          }
-
-         if((this.var_496 == 1 || this.var_496 == 2 || this.var_496 == 5) && var6 > 185) {
-            this.var_50d = 11840;
-            if(this.var_590 > 160) {
+		 
+         if((this.var_496 == 1 || this.var_496 == 2 || this.var_496 == 5) && var6 > constante_185) {
+            //this.var_50d = 11840;
+			this.var_50d = Class_61.altura << 6;
+			
+            if(this.var_590 > constante_160) {
                Class_61.var_12be = (byte)(Class_61.var_12be + 4);
                this.var_496 = 3;
                --this.var_29f;
@@ -655,7 +660,7 @@ public class Class_bd {
                }
             }
          }
-
+		 
          if(this.var_496 != 0 && this.var_1e8 == 0) {
             if(this.var_154 >= 5 && this.var_154 <= 12) {
                if(this.var_154 > 4 && this.var_154 < 12) {
@@ -705,9 +710,7 @@ public class Class_bd {
 
       if(this.var_376 != 255) {
          var1.drawImage(Class_61.var_d93[30 + this.var_3b0], this.var_376, constante_189, 33); //particulas
-		 
-		 //Class_61.printme(Class_61.var_d93[30 + this.var_3b0], "Class_61.var_d93[30 + this.var_3b0]");
-		 
+
          ++this.var_3b0;
          if(this.var_3b0 == 5) {
             this.var_376 = 255;
@@ -721,7 +724,7 @@ public class Class_bd {
       int var8 = this.var_8c3.var_4c4 >> 6;
       int var9 = this.var_8c3.var_50d >> 6;
       int var10 = 2;
-
+	  
       while(true) {
          --var10;
          int var11;
@@ -752,32 +755,19 @@ public class Class_bd {
 
             switch(this.var_496) {
             case 2:
-               var1.drawImage(Class_61.var_d93[27 + this.var_65e], this.var_4c4 >> 6, (this.var_50d >> 6) - 10, 3);
-			   
-			   Class_61.printme(Class_61.var_d93[27 + this.var_65e], "Class_61.var_d93[27 + this.var_65e]");
-			   
+               var1.drawImage(Class_61.var_d93[27 + this.var_65e], this.var_4c4 >> 6, (this.var_50d >> 6) - 10, 3); //paracaidas.
             case 1:
             case 4:
             case 5:
-               var1.drawImage(Class_61.var_d93[21 + this.var_5bb], this.var_4c4 >> 6, this.var_50d >> 6, 3);
-			   
-			   Class_61.printme(Class_61.var_d93[21 + this.var_5bb], "Class_61.var_d93[21 + this.var_5bb]");
-			   
-			   
+			   var1.drawImage(Class_61.var_d93[21 + this.var_5bb], this.var_4c4 >> 6, this.var_50d >> 6, 3); //personita
                break;
             case 3:
-               var1.drawImage(Class_61.var_d93[17 + this.var_5bb], this.var_4c4 >> 6, this.var_50d >> 6, 3);
-			   
-			   Class_61.printme(Class_61.var_d93[17 + this.var_5bb], "Class_61.var_d93[17 + this.var_5bb]");
-			   
+               var1.drawImage(Class_61.var_d93[17 + this.var_5bb], this.var_4c4 >> 6, this.var_50d >> 6, 3); //angel
             }
 
             if(this.var_5f < 2 && this.var_325 > 0) {
                if(this.var_325 == 2) {
                   var1.drawImage(Class_61.var_d93[14 + this.var_33c], this.var_f6, this.var_144, 3); //fuego en avioneta.
-				  
-				  //Class_61.printme(Class_61.var_d93[14 + this.var_33c], "Class_61.var_d93[14 + this.var_33c]");
-				  
                   ++this.var_33c;
                   if(this.var_33c > 2) {
                      this.var_33c = 0;
@@ -801,9 +791,6 @@ public class Class_bd {
                      }
                   } else {
                      var1.drawImage(Class_61.var_d93[this.var_a8e[var12] + 9], this.var_a62[var12], this.var_a7b[var12], 3); //humo
-                     
-					 //Class_61.printme(Class_61.var_d93[this.var_a8e[var12] + 9], "Class_61.var_d93[this.var_a8e[var12] + 9]");
-					 
 					 ++this.var_a8e[var12];
                      if(this.var_a8e[var12] > 4) {
                         this.var_a62[var12] = -1;
@@ -850,7 +837,7 @@ public class Class_bd {
                var7 = Math.abs(var13.var_ac - var9);
                var11 = var6 * var6 + var7 * var7;
                if(var11 < 30) {
-                  Class_61.var_12be = (byte)(Class_61.var_12be + 8);
+				  Class_61.var_12be = (byte)(Class_61.var_12be + 8);
                   this.var_8c3.var_496 = 3;
                   this.var_8c3.var_5bb = 0;
                   var13.sub_6a(true);

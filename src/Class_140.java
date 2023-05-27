@@ -49,6 +49,11 @@ public class Class_140 implements Runnable {
 
    public void sub_c2() throws IOException {
       int var1 = this.var_83.readInt();
+	  
+	  //leo el int que envié?
+	  //int posicion_y = this.var_83.readInt();
+	  //Class_61.debugme(posicion_y, "POSICION_Y");
+	  
       switch(var1) {
       case -255:
          this.sub_ef();
